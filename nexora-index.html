@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA — The Future Starts Here</title>
+
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #050510;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(128, 0, 255, 0.25), transparent 65%);
+        top: -250px;
+        left: -200px;
+        z-index: -2;
+        animation: moveGlow 10s infinite alternate ease-in-out;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 200, 255, 0.20), transparent 65%);
+        bottom: -250px;
+        right: -200px;
+        z-index: -2;
+        animation: moveGlow2 12s infinite alternate ease-in-out;
+    }
+
+    @keyframes moveGlow {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(250px, 180px);
+        }
+    }
+
+    @keyframes moveGlow2 {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(-200px, -150px);
+        }
+    }
+
+    /* =========================
+       PARTICLES
+    ========================== */
+
+    #particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+        from {
+            transform: translateY(110vh);
+        }
+
+        to {
+            transform: translateY(-10vh);
+        }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(1100px, 92%);
+        padding: 15px 25px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(20px);
+
+        border-radius: 50px;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 2px;
+
+        background: linear-gradient(
+            90deg,
+            #00ffff,
+            #8a2be2,
+            #ff00ff
+        );
+
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+
+    nav a {
+        color: #ddd;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: #00ffff;
+        text-shadow: 0 0 15px #00ffff;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        padding: 120px 20px 60px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 8px 18px;
+        border: 1px solid rgba(0,255,255,0.4);
+        border-radius: 50px;
+
+        color: #00ffff;
+        font-size: 13px;
+
+        background: rgba(0,255,255,0.06);
+
+        box-shadow:
+            0 0 20px rgba(0,255,255,0.15);
+
+        margin-bottom: 25px;
+    }
+
+    h1 {
+        font-size: clamp(50px, 9vw, 110px);
+        line-height: 0.95;
+        font-weight: 900;
+
+        background: linear-gradient(
+            90deg,
+            #ffffff,
+            #00ffff,
+            #8a2be2,
+            #ff00ff,
+            #ffffff
+        );
+
+        background-size: 300% auto;
+
+        -webkit-background-clip: text;
+        color: transparent;
+
+        animation: gradientText 6s linear infinite;
+    }
+
+    @keyframes gradientText {
+        to {
+            background-position: 300% center;
+        }
+    }
+
+    .hero p {
+        margin: 30px auto;
+        max-width: 650px;
+        color: #aaa;
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    .typing {
+        color: #00ffff;
+        font-weight: bold;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================== */
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 35px;
+    }
+
+    .btn {
+        position: relative;
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+
+        overflow: hidden;
+    }
+
+    .btn-primary {
+        color: #000;
+        background: linear-gradient(
+            90deg,
+            #00ffff,
+            #00ff88
+        );
+
+        box-shadow:
+            0 0 20px rgba(0,255,255,0.5);
+    }
+
+    .btn-secondary {
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+    }
+
+    .btn:hover {
+        transform: translateY(-5px) scale(1.03);
+    }
+
+    .btn-primary:hover {
+        box-shadow:
+            0 0 30px #00ffff,
+            0 0 60px rgba(0,255,255,0.4);
+    }
+
+    .btn-secondary:hover {
+        border-color: #00ffff;
+        color: #00ffff;
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    section {
+        padding: 110px 7%;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .section-title p {
+        color: #888;
+    }
+
+    /* =========================
+       CARDS
+    ========================== */
+
+    .cards {
+        max-width: 1200px;
+        margin: auto;
+
+        display: grid;
+        grid-template-columns:
+            repeat(auto-fit, minmax(250px, 1fr));
+
+        gap: 25px;
+    }
+
+    .card {
+        position: relative;
+
+        padding: 35px;
+
+        border-radius: 25px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,0.09),
+                rgba(255,255,255,0.02)
+            );
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        backdrop-filter: blur(15px);
+
+        overflow: hidden;
+
+        transition: 0.4s;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+
+        width: 150px;
+        height: 150px;
+
+        background: #00ffff;
+
+        filter: blur(100px);
+
+        opacity: 0;
+
+        transition: 0.4s;
+    }
+
+    .card:hover::before {
+        opacity: 0.25;
+    }
+
+    .card:hover {
+        transform:
+            translateY(-10px)
+            rotateX(3deg)
+            rotateY(-3deg);
+
+        border-color: rgba(0,255,255,0.4);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.4),
+            0 0 30px rgba(0,255,255,0.1);
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: #999;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats {
+        max-width: 1000px;
+        margin: 60px auto;
+
+        display: grid;
+        grid-template-columns:
+            repeat(auto-fit, minmax(180px, 1fr));
+
+        gap: 20px;
+    }
+
+    .stat {
+        text-align: center;
+        padding: 30px;
+
+        border-radius: 20px;
+
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat h3 {
+        font-size: 45px;
+        color: #00ffff;
+    }
+
+    .stat p {
+        color: #888;
+        margin-top: 8px;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta {
+        max-width: 1000px;
+        margin: auto;
+
+        text-align: center;
+
+        padding: 80px 30px;
+
+        border-radius: 35px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0,255,255,0.08),
+                rgba(140,0,255,0.1)
+            );
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        box-shadow:
+            0 0 80px rgba(100,0,255,0.08);
+    }
+
+    .cta h2 {
+        font-size: clamp(35px, 5vw, 65px);
+        margin-bottom: 20px;
+    }
+
+    .cta p {
+        color: #999;
+        max-width: 600px;
+        margin: auto auto 30px;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+        padding: 40px 20px;
+        text-align: center;
+        color: #666;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer span {
+        color: #00ffff;
+    }
+
+    /* =========================
+       CURSOR GLOW
+    ========================== */
+
+    #cursorGlow {
+        position: fixed;
+
+        width: 250px;
+        height: 250px;
+
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(0,255,255,0.12),
+                transparent 70%
+            );
+
+        pointer-events: none;
+
+        transform: translate(-50%, -50%);
+
+        z-index: 999;
+
+        mix-blend-mode: screen;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media(max-width: 700px) {
+
+        nav {
+            padding: 12px 18px;
+        }
+
+        nav ul {
+            display: none;
+        }
+
+        .hero {
+            padding-top: 140px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+        }
+
+        #cursorGlow {
+            display: none;
+        }
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 1s;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- Cursor Glow -->
+<div id="cursorGlow"></div>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav>
+    <div class="logo">NEXORA</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🚀 THE NEXT GENERATION IS HERE
+        </div>
+
+        <h1>
+            BUILD<br>
+            BEYOND
+        </h1>
+
+        <p>
+            Welcome to the future of digital experiences.
+            Create something
+            <span class="typing" id="typing"></span>
+        </p>
+
+        <div class="buttons">
+
+            <a href="#features" class="btn btn-primary">
+                Explore Now ⚡
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Let's Connect →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================== -->
+
+<section id="features">
+
+    <div class="section-title reveal">
+
+        <h2>⚡ INSANE FEATURES</h2>
+
+        <p>
+            Everything you need to create something unforgettable.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card reveal">
+
+            <div class="icon">🚀</div>
+
+            <h3>Lightning Fast</h3>
+
+            <p>
+                Built for speed, performance and smooth
+                user experiences across every device.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">🧠</div>
+
+            <h3>Smart Technology</h3>
+
+            <p>
+                Intelligent systems designed to make
+                complicated things incredibly simple.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">🔐</div>
+
+            <h3>Secure by Design</h3>
+
+            <p>
+                Modern security practices keep your
+                applications and data protected.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">🌎</div>
+
+            <h3>Global Scale</h3>
+
+            <p>
+                Designed to grow from a small project
+                into a global platform.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================== -->
+
+<section id="stats">
+
+    <div class="section-title reveal">
+
+        <h2>THE NUMBERS</h2>
+
+        <p>
+            Built to impress. Designed to scale.
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat reveal">
+            <h3 data-target="99">0</h3>
+            <p>% Uptime</p>
+        </div>
+
+        <div class="stat reveal">
+            <h3 data-target="250">0</h3>
+            <p>Projects</p>
+        </div>
+
+        <div class="stat reveal">
+            <h3 data-target="50">0</h3>
+            <p>Countries</p>
+        </div>
+
+        <div class="stat reveal">
+            <h3 data-target="24">0</h3>
+            <p>/7 Support</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section id="contact">
+
+    <div class="cta reveal">
+
+        <h2>READY TO BUILD?</h2>
+
+        <p>
+            Don't just follow the future.
+            Create it. Your next crazy idea starts right here.
+        </p>
+
+        <a href="mailto:hello@example.com"
+           class="btn btn-primary">
+            Start Something Crazy 🚀
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    Made with ❤️ + ☕ + Code
+
+    <br><br>
+
+    © 2026 <span>NEXORA</span>. All rights reserved.
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    /* =========================
+       PARTICLES
+    ========================== */
+
+    const particleContainer =
+        document.getElementById("particles");
+
+    for (let i = 0; i < 80; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className = "particle";
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+        particle.style.animationDuration =
+            (Math.random() * 10 + 8) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * 10 + "s";
+
+        particle.style.opacity =
+            Math.random();
+
+        particleContainer.appendChild(particle);
+    }
+
+
+    /* =========================
+       TYPING EFFECT
+    ========================== */
+
+    const words = [
+        "beautiful.",
+        "powerful.",
+        "different.",
+        "crazy.",
+        "unforgettable."
+    ];
+
+    const typing =
+        document.getElementById("typing");
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+        const word = words[wordIndex];
+
+        if (!deleting) {
+
+            typing.textContent =
+                word.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === word.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1500);
+
+                return;
+            }
+
+        } else {
+
+            typing.textContent =
+                word.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                wordIndex =
+                    (wordIndex + 1) % words.length;
+            }
+        }
+
+        setTimeout(
+            typeEffect,
+            deleting ? 50 : 100
+        );
+    }
+
+    typeEffect();
+
+
+    /* =========================
+       CURSOR GLOW
+    ========================== */
+
+    const cursorGlow =
+        document.getElementById("cursorGlow");
+
+    document.addEventListener("mousemove", (e) => {
+
+        cursorGlow.style.left =
+            e.clientX + "px";
+
+        cursorGlow.style.top =
+            e.clientY + "px";
+
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const reveals =
+        document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+
+        reveals.forEach(element => {
+
+            const windowHeight =
+                window.innerHeight;
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            if (elementTop <
+                windowHeight - 100) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+    }
+
+    window.addEventListener(
+        "scroll",
+        revealOnScroll
+    );
+
+    revealOnScroll();
+
+
+    /* =========================
+       COUNTER ANIMATION
+    ========================== */
+
+    const counters =
+        document.querySelectorAll("[data-target]");
+
+    let counterStarted = false;
+
+    function startCounters() {
+
+        if (counterStarted) return;
+
+        const statsSection =
+            document.getElementById("stats");
+
+        const position =
+            statsSection.getBoundingClientRect().top;
+
+        if (position < window.innerHeight - 100) {
+
+            counterStarted = true;
+
+            counters.forEach(counter => {
+
+                const target =
+                    Number(counter.dataset.target);
+
+                let current = 0;
+
+                const increment =
+                    Math.ceil(target / 50);
+
+                const timer =
+                    setInterval(() => {
+
+                        current += increment;
+
+                        if (current >= target) {
+
+                            current = target;
+
+                            clearInterval(timer);
+
+                        }
+
+                        counter.textContent =
+                            current;
+
+                    }, 30);
+
+            });
+
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        startCounters
+    );
+
+    startCounters();
+
+
+    /* =========================
+       CARD 3D EFFECT
+    ========================== */
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            (e) => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+                const rotateX =
+                    (y - centerY) / 15;
+
+                const rotateY =
+                    (centerX - x) / 15;
+
+                card.style.transform =
+                    `perspective(700px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-10px)`;
+
+            }
+        );
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
+
+    });
+
+
+    /* =========================
+       BUTTON RIPPLE
+    ========================== */
+
+    document.querySelectorAll(".btn")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function(e) {
+
+                    const ripple =
+                        document.createElement("span");
+
+                    ripple.style.position =
+                        "absolute";
+
+                    ripple.style.width =
+                        "10px";
+
+                    ripple.style.height =
+                        "10px";
+
+                    ripple.style.background =
+                        "rgba(255,255,255,0.5)";
+
+                    ripple.style.borderRadius =
+                        "50%";
+
+                    ripple.style.left =
+                        e.offsetX + "px";
+
+                    ripple.style.top =
+                        e.offsetY + "px";
+
+                    ripple.style.transform =
+                        "translate(-50%, -50%)";
+
+                    ripple.style.animation =
+                        "ripple 0.6s linear";
+
+                    this.appendChild(ripple);
+
+                    setTimeout(
+                        () => ripple.remove(),
+                        600
+                    );
+
+                }
+            );
+
+        });
+
+</script>
+
+
+<style>
+
+    @keyframes ripple {
+
+        from {
+            width: 10px;
+            height: 10px;
+            opacity: 1;
+        }
+
+        to {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+
+    }
+
+</style>
+```
+
+</body>
+</html>
